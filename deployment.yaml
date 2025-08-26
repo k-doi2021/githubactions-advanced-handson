@@ -14,7 +14,8 @@ spec:
     spec:
       containers:
       - name: backend
-        image: getting-started-todo-app
+        # このプレースホルダーがワークフローによって置換されます
+        image: __IMAGE_NAME_PLACEHOLDER__
         ports:
         - containerPort: 3000
 ---

@@ -26,6 +26,10 @@ jobs:
       run: |
         az acr build --registry ${{ secrets.ACR_NAME }} --image getting-started-todo-app:${{ github.sha }} .
 
+    - name: 'Update manifest with image name'
+      run: |
+        sed -i 's|__IMAGE_NAME_PLACEHOLDER__|${{ secrets.ACR_NAME }}.azurecr.io/getting-started-todo-app:${{ github.sha }}|g'./deployment.yaml
+
     - name: 'Set K8s context'
       uses: azure/aks-set-context@v3
       with:
@@ -37,6 +41,4 @@ jobs:
       with:
         action: 'deploy'
         manifests: |
-         ./deployment.yaml
-        images: |
-          ${{ secrets.ACR_NAME }}.azurecr.io/getting-started-todo-app:${{ github.sha }}
+        ./deployment.yaml
