@@ -37,7 +37,6 @@ jobs:
       with:
         action: 'deploy'
         manifests: |
-        ./kubernetes/deployment.yaml
-        ./kubernetes/service.yaml
+        ./deployment.yaml
         images: |
           ${{ secrets.ACR_NAME }}.azurecr.io/getting-started-todo-app:${{ github.sha }}
