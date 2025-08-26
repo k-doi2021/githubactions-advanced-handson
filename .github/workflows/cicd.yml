@@ -28,7 +28,7 @@ jobs:
 
     - name: 'Update manifest with image name'
       run: |
-        sed -i 's|__IMAGE_NAME_PLACEHOLDER__|${{ secrets.ACR_NAME }}.azurecr.io/getting-started-todo-app:${{ github.sha }}|g'./deployment.yaml
+        sed -i 's|__IMAGE_NAME_PLACEHOLDER__|${{ secrets.ACR_NAME }}.azurecr.io/getting-started-todo-app:${{ github.sha }}|g' ./deployment.yaml
 
     - name: 'Set K8s context'
       uses: azure/aks-set-context@v3
