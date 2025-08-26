@@ -24,7 +24,7 @@ jobs:
 
     - name: 'Build and push image to ACR'
       run: |
-        az acr build --registry ${{ secrets.ACR_NAME }} --image getting-started-todo-app:${{ github.sha }}.
+        az acr build --registry ${{ secrets.ACR_NAME }} --image getting-started-todo-app:${{ github.sha }} .
 
     - name: 'Set K8s context'
       uses: azure/aks-set-context@v3
